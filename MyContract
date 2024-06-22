@@ -1,0 +1,22 @@
+pragma solidity ^0.8.0;
+
+contract MyContract { 
+    uint256 public value;
+
+    function setValue(uint256 _value) public {
+        require(_value > 0, "Value must be greater than 0");
+        value = _value;
+    }
+
+    function testAssert() public {
+        assert(value >= 0);
+        value = value+1; 
+    }
+
+    function resetValue() public {
+        if (value == 0) {
+            revert("Value is already 0");
+        }
+        value = 0; 
+    }
+}
